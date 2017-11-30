@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boot.dao.UserMapper">
+    <resultMap type="com.boot.domain.UserDO" id="userMap">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, name, description
+    </sql>
+
+    <select id="getById" resultMap="userMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM user WHERE id = #{0}
+    </select>
+
+</mapper>
